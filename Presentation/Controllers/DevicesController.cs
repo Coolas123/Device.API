@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Presentation.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/devices")]
     [Produces("application/json")]
     public class DevicesController : ControllerBase {
@@ -24,7 +25,6 @@ namespace Presentation.Controllers
         /// <response code="400"> The request was successful but there is no content</response>
         /// <response code="200"> The request was successful. Returns a list of all devices</response>
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> Get() {
             var devices = await deviceRepository.GetAllDevicesAsync();
 
